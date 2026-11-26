@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import PriceComparison from "./components/PriceComparison";
 import BestDeal from "./components/BestDeal";
+import "./App.css";
 
 export default function App() {
   // State for search query
@@ -36,8 +37,13 @@ export default function App() {
       ) : (
         /* If a product is selected, show back button and product details */
         <div>
-          <button onClick={() => setSelectedProduct(null)}>
-            Back to products
+          <button
+            type="button"
+            className="pw-back-button"
+            onClick={() => setSelectedProduct(null)}
+          >
+            <span className="pw-back-arrow" aria-hidden="true">←</span>
+            Back to Products
           </button>
           <PriceComparison product={selectedProduct} />
           <BestDeal product={selectedProduct} />

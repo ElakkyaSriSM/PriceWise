@@ -11,6 +11,10 @@ function calculateDiscountPercent(originalPrice, price) {
   return Math.round(((originalPrice - price) / originalPrice) * 100);
 }
 
+function getStoreKey(storeName) {
+  return String(storeName || '').trim().toLowerCase();
+}
+
 export default function PriceComparison({ product }) {
   if (!product || !Array.isArray(product.stores) || product.stores.length === 0) {
     return (
@@ -44,13 +48,19 @@ export default function PriceComparison({ product }) {
             {product.stores.map((item) => {
               const discountPercent = calculateDiscountPercent(item.originalPrice, item.price);
               const isLowest = item.price === lowestPrice;
+              const storeKey = getStoreKey(item.store);
 
               return (
                 <tr
                   key={item.store}
                   className={isLowest ? 'price-comparison__row price-comparison__row--lowest' : 'price-comparison__row'}
                 >
-                  <td className="price-comparison__store">{item.store}</td>
+                  <td className="price-comparison__store">
+                    <span className={`price-comparison__store-badge price-comparison__store-badge--${storeKey}`}>
+                      <span className="price-comparison__store-dot" aria-hidden="true" />
+                      {item.store}
+                    </span>
+                  </td>
                   <td className="price-comparison__original">
                     {formatRupees(item.originalPrice)}
                   </td>
@@ -66,7 +76,7 @@ export default function PriceComparison({ product }) {
                     {isLowest ? (
                       <span className="price-comparison__lowest-badge">Lowest Price</span>
                     ) : (
-                      <span className="price-comparison__muted">—</span>
+                      <span className="price-comparison__muted">Standard</span>
                     )}
                   </td>
                 </tr>
