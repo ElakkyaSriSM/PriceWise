@@ -1,4 +1,6 @@
 .pw-card {
+  height: 100%;
+  box-sizing: border-box;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 18px;
@@ -6,21 +8,27 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
 .pw-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 32px rgba(79, 70, 229, 0.14);
+  box-shadow: 0 16px 32px rgba(79, 70, 229, 0.13);
   border-color: #c7d2fe;
 }
 
 .pw-card-media {
   position: relative;
   width: 100%;
-  height: 190px;
+  height: 210px;
+  flex-shrink: 0;
+  padding: 18px;
+  box-sizing: border-box;
   background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   border-bottom: 1px solid #f1f5f9;
 }
@@ -28,24 +36,33 @@
 .pw-card-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
   display: block;
+  transition: transform 0.25s ease;
+}
+
+.pw-card:hover .pw-card-image {
+  transform: scale(1.03);
 }
 
 .pw-card-image-placeholder {
   width: 100%;
   height: 100%;
-  background: #cbd5e1;
+  border-radius: 12px;
+  background: #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #475569;
+  color: #64748b;
   font-size: 0.85rem;
   font-weight: 600;
 }
 
 .pw-card-body {
-  padding: 18px;
+  padding: 18px 20px 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -54,10 +71,10 @@
 
 .pw-card-category {
   align-self: flex-start;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   padding: 4px 10px;
   border-radius: 999px;
   color: #6d28d9;
@@ -66,7 +83,8 @@
 
 .pw-card-title {
   margin: 0;
-  font-size: 1.1rem;
+  min-height: 2.7em;
+  font-size: 1.05rem;
   font-weight: 700;
   line-height: 1.35;
   color: #0f172a;
