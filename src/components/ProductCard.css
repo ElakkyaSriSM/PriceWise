@@ -1,0 +1,122 @@
+.pw-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.pw-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(79, 70, 229, 0.14);
+  border-color: #c7d2fe;
+}
+
+.pw-card-media {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  background: #f8fafc;
+  overflow: hidden;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.pw-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pw-card-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.pw-card-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+}
+
+.pw-card-category {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: #6d28d9;
+  background: linear-gradient(135deg, #ede9fe, #fce7f3);
+}
+
+.pw-card-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #0f172a;
+}
+
+.pw-card-price-box {
+  margin-top: auto;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.pw-card-price-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #047857;
+}
+
+.pw-card-price-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #065f46;
+}
+
+.pw-card-button {
+  margin-top: 6px;
+  width: 100%;
+  padding: 11px 16px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.28);
+}
+
+.pw-card-button:hover {
+  opacity: 0.94;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.38);
+}
+
+.pw-card-button:active {
+  transform: scale(0.98);
+}
