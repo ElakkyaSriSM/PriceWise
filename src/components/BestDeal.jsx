@@ -1,15 +1,28 @@
-import { getBestDeal, calculateFinalPrice } from "../utils/dealUtils";
+import {
+  getBestDeal,
+  getFastestDelivery,
+  calculateFinalPrice,
+} from "../utils/dealUtils";
 import "./BestDeal.css";
 
 function formatINR(amount) {
   return `₹${Number(amount ?? 0).toLocaleString("en-IN")}`;
 }
 
-export default function BestDeal({ product }) {
-  const stores = product?.stores ?? [];
-  const bestDeal = getBestDeal(stores);
+function formatDeliveryCharge(charge) {
+  return charge === 0 ? "Free (₹0)" : formatINR(charge);
+}
 
-  if (!product || !bestDeal) {
+function formatDeliveryDays(days) {
+  return days === 1 ? "1 day" : `${days} days`;
+}
+
+export default function BestDeal({ product }) {
+  const stores = Array.isArray(product?.stores) ? product.stores : [];
+  const bestDeal = getBestDeal(stores);
+  const fastestDelivery = getFastestDelivery(stores);
+
+  if (!product || !bestDeal || !fastestDelivery) {
     return (
       <section className="best-deal-section" aria-label="Best Deal">
         <p className="best-deal-empty">
@@ -39,16 +52,52 @@ export default function BestDeal({ product }) {
         )}
       </div>
 
-      <div className="best-deal-highlight" role="region" aria-label="Best Deal">
-        <span className="best-deal-badge">Best Deal</span>
-        <div className="best-deal-summary">
-          <div className="best-deal-store-row">
-            <span className="best-deal-store-name">{bestDeal.store}</span>
-            <span className="best-deal-final-price">
-              {formatINR(bestDeal.finalPrice)}
-            </span>
+      <div className="recommendations-grid">
+        <div className="best-deal-highlight" role="region" aria-label="Best Deal">
+          <span className="best-deal-badge">Best Deal</span>
+          <div className="best-deal-summary">
+            <div className="best-deal-store-row">
+              <span className="best-deal-store-name">{bestDeal.store}</span>
+              <span className="best-deal-final-price">
+                {formatINR(bestDeal.finalPrice)}
+              </span>
+            </div>
+            <p className="best-deal-reason">{reason}</p>
           </div>
-          <p className="best-deal-reason">{reason}</p>
+        </div>
+
+        <div
+          className="fastest-delivery-highlight"
+          role="region"
+          aria-labelledby="fastest-delivery-heading"
+        >
+          <span id="fastest-delivery-heading" className="fastest-delivery-badge">
+            Fastest Delivery
+          </span>
+          <div className="fastest-delivery-summary">
+            <div className="best-deal-store-row">
+              <span className="best-deal-store-name">
+                {fastestDelivery.store}
+              </span>
+              <span className="fastest-delivery-time">
+                {formatDeliveryDays(fastestDelivery.deliveryDays)}
+              </span>
+            </div>
+            <dl className="fastest-delivery-details">
+              <div className="fastest-delivery-detail">
+                <dt>Product Price</dt>
+                <dd>{formatINR(fastestDelivery.price)}</dd>
+              </div>
+              <div className="fastest-delivery-detail">
+                <dt>Delivery Charge</dt>
+                <dd>{formatDeliveryCharge(fastestDelivery.deliveryCharge)}</dd>
+              </div>
+              <div className="fastest-delivery-detail fastest-delivery-detail--total">
+                <dt>Final Payable</dt>
+                <dd>{formatINR(fastestDelivery.finalPrice)}</dd>
+              </div>
+            </dl>
+          </div>
         </div>
       </div>
 
@@ -70,8 +119,6 @@ export default function BestDeal({ product }) {
                 item.store === bestDeal.store &&
                 finalAmount === bestDeal.finalPrice &&
                 item.deliveryDays === bestDeal.deliveryDays;
-              const daysLabel =
-                item.deliveryDays === 1 ? "1 day" : `${item.deliveryDays} days`;
 
               return (
                 <tr
@@ -86,11 +133,9 @@ export default function BestDeal({ product }) {
                   </td>
                   <td className="num">{formatINR(item.price)}</td>
                   <td className="num">
-                    {item.deliveryCharge === 0
-                      ? "Free (₹0)"
-                      : formatINR(item.deliveryCharge)}
+                    {formatDeliveryCharge(item.deliveryCharge)}
                   </td>
-                  <td className="num">{daysLabel}</td>
+                  <td className="num">{formatDeliveryDays(item.deliveryDays)}</td>
                   <td className="num final-cell">{formatINR(finalAmount)}</td>
                 </tr>
               );
