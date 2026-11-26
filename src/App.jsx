@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import PriceComparison from "./components/PriceComparison";
 import BestDeal from "./components/BestDeal";
+import Footer from "./components/Footer";
 import "./App.css";
 
 export default function App() {
@@ -36,7 +37,7 @@ export default function App() {
         />
       ) : (
         /* If a product is selected, show back button and product details */
-        <div>
+        <main className="pw-compare-page">
           <button
             type="button"
             className="pw-back-button"
@@ -45,10 +46,37 @@ export default function App() {
             <span className="pw-back-arrow" aria-hidden="true">←</span>
             Back to Products
           </button>
+
+          <section className="pw-compare-product-card" aria-label="Selected product">
+            {selectedProduct.image && (
+              <div className="pw-compare-product-media">
+                <img
+                  className="pw-compare-product-image"
+                  src={selectedProduct.image}
+                  alt={selectedProduct.name}
+                />
+              </div>
+            )}
+            <div className="pw-compare-product-info">
+              {selectedProduct.category && (
+                <span className="pw-compare-product-category">
+                  {selectedProduct.category}
+                </span>
+              )}
+              <h1 className="pw-compare-product-title">{selectedProduct.name}</h1>
+              <p className="pw-compare-product-sub">
+                Comparing prices, discounts, and delivery across Amazon, Flipkart &amp; Croma
+              </p>
+            </div>
+          </section>
+
           <PriceComparison product={selectedProduct} />
           <BestDeal product={selectedProduct} />
-        </div>
+        </main>
       )}
+
+      {/* Always display the Footer */}
+      <Footer />
     </div>
   );
 }
