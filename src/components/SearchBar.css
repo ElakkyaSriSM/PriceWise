@@ -1,6 +1,6 @@
 .pw-searchbar {
   width: 100%;
-  max-width: 620px;
+  max-width: 640px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -10,23 +10,38 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   background: #ffffff;
-  border: 2px solid #e2e8f0;
+  border: 1.5px solid #ddd6fe;
   border-radius: 16px;
   padding: 10px 14px;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  box-shadow:
+    0 10px 28px rgba(79, 70, 229, 0.1),
+    0 2px 6px rgba(15, 23, 42, 0.04);
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
+.pw-searchbar-box:hover {
+  border-color: #a5b4fc;
+  box-shadow:
+    0 12px 32px rgba(79, 70, 229, 0.14),
+    0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
 .pw-searchbar-box:focus-within {
-  border-color: #6366f1;
-  box-shadow: 0 10px 28px rgba(99, 102, 241, 0.18);
+  border-color: #7c3aed;
+  box-shadow:
+    0 0 0 4px rgba(124, 58, 237, 0.14),
+    0 14px 34px rgba(79, 70, 229, 0.18);
   transform: translateY(-1px);
 }
 
 .pw-searchbar-icon {
-  color: #6366f1;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #f5f3ff;
+  color: #6d28d9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,34 +57,36 @@
   background: transparent;
   font-size: 1rem;
   font-family: inherit;
+  font-weight: 500;
   color: #0f172a;
   line-height: 1.4;
 }
 
 .pw-searchbar-input::placeholder {
   color: #94a3b8;
+  font-weight: 400;
 }
 
 .pw-searchbar-clear {
   border: none;
   background: #f1f5f9;
   color: #475569;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 999px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 700;
   flex-shrink: 0;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .pw-searchbar-clear:hover {
-  background: #e2e8f0;
-  color: #0f172a;
+  background: #ede9fe;
+  color: #5b21b6;
 }
 
 @media (max-width: 600px) {
@@ -78,9 +95,15 @@
   }
 
   .pw-searchbar-box {
-    padding: 8px 12px;
-    border-radius: 12px;
+    padding: 8px 10px;
+    border-radius: 14px;
     gap: 8px;
+  }
+
+  .pw-searchbar-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
   }
 
   .pw-searchbar-input {
