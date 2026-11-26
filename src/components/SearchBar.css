@@ -1,0 +1,69 @@
+.pw-searchbar {
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.pw-searchbar-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 10px 14px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.pw-searchbar-box:focus-within {
+  border-color: #6366f1;
+  box-shadow: 0 10px 28px rgba(99, 102, 241, 0.18);
+  transform: translateY(-1px);
+}
+
+.pw-searchbar-icon {
+  color: #6366f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pw-searchbar-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #0f172a;
+  line-height: 1.4;
+}
+
+.pw-searchbar-input::placeholder {
+  color: #94a3b8;
+}
+
+.pw-searchbar-clear {
+  border: none;
+  background: #f1f5f9;
+  color: #475569;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.pw-searchbar-clear:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}

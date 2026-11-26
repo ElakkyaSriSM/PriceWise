@@ -1,0 +1,102 @@
+.pw-navbar {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #ec4899 100%);
+  color: #ffffff;
+  padding: 16px 24px;
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.22);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pw-navbar-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pw-navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.pw-navbar-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.pw-navbar-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pw-navbar-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.pw-navbar-tagline {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.pw-navbar-stores {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pw-store-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.pw-store-pill--amazon {
+  background: rgba(255, 153, 0, 0.25);
+  border-color: rgba(255, 184, 77, 0.6);
+}
+
+.pw-store-pill--flipkart {
+  background: rgba(37, 99, 235, 0.32);
+  border-color: rgba(147, 197, 253, 0.6);
+}
+
+.pw-store-pill--croma {
+  background: rgba(13, 148, 136, 0.32);
+  border-color: rgba(94, 234, 212, 0.6);
+}
+
+@media (max-width: 640px) {
+  .pw-navbar {
+    padding: 14px 16px;
+  }
+
+  .pw-navbar-stores {
+    display: none;
+  }
+}
