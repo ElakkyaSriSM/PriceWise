@@ -2,9 +2,12 @@
   width: 100%;
   max-width: 620px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .pw-searchbar-box {
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -31,6 +34,7 @@
 }
 
 .pw-searchbar-input {
+  width: 100%;
   flex: 1;
   min-width: 0;
   border: none;
@@ -66,4 +70,20 @@
 .pw-searchbar-clear:hover {
   background: #e2e8f0;
   color: #0f172a;
+}
+
+@media (max-width: 600px) {
+  .pw-searchbar {
+    max-width: 100%;
+  }
+
+  .pw-searchbar-box {
+    padding: 8px 12px;
+    border-radius: 12px;
+    gap: 8px;
+  }
+
+  .pw-searchbar-input {
+    font-size: 0.95rem;
+  }
 }
